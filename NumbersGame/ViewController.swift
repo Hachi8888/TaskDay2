@@ -60,7 +60,6 @@ class ViewController: UIViewController {
         // ②入力チェック(回答をInt型へ)
         /* キャストするときにInt()とする場合と as? Int とする場合の違いが不明。。
            今回はInt()としないとエラーとなる↓ */
-        
         if let yourAnswer: Int = Int(inputFeild.text!) {
             // Int型の回答の場合
             // ③回答の正否を判定する
@@ -71,18 +70,22 @@ class ViewController: UIViewController {
                 showAlert(message: "\(count - 1)回目で正解しました!", title: "正解")
                 
                 
+                
             } else {
                 
                 // 不正解
-                // 不正解コメントをアラートする
+                // 不正解コメント(ヒント)をアラートする
                 
-                showAlert(message: "[\(count - 1)回目]不正解", title: "")
-                
-                // ヒントを表示する
+                showHint(yourAnswer: yourAnswer)
                 
                 
                 
             }
+        // showNumberラベル(デフォルト:??)に入力した数字を表示する
+        // yourAnswer をString型にキャストした
+            showNumber.text = String(yourAnswer)
+            
+         
             
             
             
@@ -111,7 +114,7 @@ class ViewController: UIViewController {
     
     
     
-    // ヒントを表示する関数
+    // 不正解コメント(ヒント)を表示する関数
     
     func showHint(yourAnswer: Int){
         // 回答が正解よりも大きい場合
