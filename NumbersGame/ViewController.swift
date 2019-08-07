@@ -68,7 +68,7 @@ class ViewController: UIViewController {
             
                 // 正解
                 // 正解コメントをアラートする
-                collectAlert(message: "\(count - 1)回目で正解しました!")
+                showAlert(message: "\(count - 1)回目で正解しました!", title: "正解")
                 
                 
             } else {
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
                 // 不正解
                 // 不正解コメントをアラートする
                 
-                showAlert(message: "[\(count - 1)回目]不正解")
+                showAlert(message: "[\(count - 1)回目]不正解", title: "")
                 
                 // ヒントを表示する
                 
@@ -88,7 +88,7 @@ class ViewController: UIViewController {
             
         } else{
            // Int型以外の入力の場合
-            showAlert(message: "数字を入力してください")
+            showAlert(message: "数字を入力してください", title: "")
         
         }
         
@@ -98,39 +98,28 @@ class ViewController: UIViewController {
 
     // アラートを出す関数:showAlert(不正解の場合or数値以外が入力された場合)
     
-    func showAlert(message: String){
+    func showAlert(message: String, title: String){
         //アラートの作成
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         //アラートのアクション(ボタンの定義)
-        let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
+        let close = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         //作成したalertに閉じるボタンを追加
         alert.addAction(close)
         //アラートを表示する
         present(alert, animated: true, completion: nil)
     }
     
-    // 正解の場合のアラートを出す関数:collectAlert
-    
-    func collectAlert(message: String){
-        //アラートの作成
-        let alert = UIAlertController(title: "正解", message: message, preferredStyle: .alert)
-        //アラートのアクション(ボタンの定義)
-        let close = UIAlertAction(title: "閉じる", style: .cancel, handler: nil)
-        //作成したalertに閉じるボタンを追加
-        alert.addAction(close)
-        //アラートを表示する
-        present(alert, animated: true, completion: nil)
-    }
     
     
     // ヒントを表示する関数
     
-    func showHint(youranswer: Int){
+    func showHint(yourAnswer: Int){
         // 回答が正解よりも大きい場合
-        if youranswer > count{
-            
+        if yourAnswer < count{
+            showAlert(message: "答えは\(yourAnswer)より小さい数字です", title: "")
         } else {
         // 回答が正解よりも小さい場合
+            showAlert(message: "答えは\(yourAnswer)より大きい数字です", title: "")
             
         }
     }
