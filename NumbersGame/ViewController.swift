@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    // ★ラベル系の紐付け一覧
+// ★ラベル系の紐付け一覧
     
     /* ①デフォルトで「??」を表示
        ②入力すると入力した数字を表示するラベル*/
@@ -19,22 +19,27 @@ class ViewController: UIViewController {
     // 回答を記入するラベル
     @IBOutlet weak var inputFeild: UITextField!
     
-    // 回答に対するコメントを記載するラベル(下方)
+    // 回答に対するコメントを記載&追加していくラベル(下方)
     @IBOutlet weak var showComment: UITextView!
     
     
+// ★共通で使う定数、変数
     
-    // ★共通で使う定数、変数
     // 乱数が入っている変数
-    var questionNum: Int = Int.random(in: 0...10)
+    var questionNum: Int = Int.random(in: 0...100)
     
     // 問題数をカウントする変数
     var count: Int = 0
     
-    // 画面が読み込まれたとき、1回だけ表示する
+    
+// 画面が読み込まれたときの処理
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+    
+        // showCommentをユーザー側で編集不可にする
+        showComment.isEditable = false
+        
         
     }
     
@@ -76,13 +81,13 @@ class ViewController: UIViewController {
                 
                 // showNumberラベルをデフォルト:??に戻す(動作未確認)
                  showNumber.text = "??"
-            
+                
+                
                 // 乱数をリセットする(動作未確認)
                 questionNum = Int.random(in: 0...100)
                 
-                
-                
-                
+                // 問題のカウントをリセットする
+                   count = 0
                 
             } else if yourAnswer > questionNum {
                 
@@ -111,9 +116,6 @@ class ViewController: UIViewController {
         // ④showNumberラベル(デフォルト:??)に入力した数字を表示する
         // yourAnswer をString型にキャストした
             showNumber.text = String(yourAnswer)
-            
-       
-            
             
             
         } else{
