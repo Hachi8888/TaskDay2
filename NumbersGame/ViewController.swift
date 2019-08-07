@@ -57,35 +57,62 @@ class ViewController: UIViewController {
         // ①問題数を進める
           count += 1
         
-        // ②入力チェック(回答をInt型へ)
+        // ②入力チェック(回答はInt型か)
         /* キャストするときにInt()とする場合と as? Int とする場合の違いが不明。。
            今回はInt()としないとエラーとなる↓ */
         if let yourAnswer: Int = Int(inputFeild.text!) {
+            
             // Int型の回答の場合
             // ③回答の正否を判定する
             if yourAnswer == questionNum {
             
                 // 正解
-                // 正解コメントをアラートする
-                showAlert(message: "\(count - 1)回目で正解しました!", title: "正解")
+                // 正解コメントをアラートする(改行は\n?、動作未確認)
+                showAlert(message: "\(count - 1)回目で正解しました!\n数字をリセットしました!", title: "正解")
+                
+             //showCommentラベルにアラート内容を追加して表示する
+                showComment.text += "\(count - 1)回目で正解しました!"
+                
+                
+                // showNumberラベルをデフォルト:??に戻す(動作未確認)
+                 showNumber.text = "??"
+            
+                // 乱数をリセットする(動作未確認)
+                questionNum = Int.random(in: 0...100)
                 
                 
                 
-            } else {
                 
-                // 不正解
+                
+            } else if yourAnswer > questionNum {
+                
+                // 不正解:正解よりも回答が大きい場合
                 // 不正解コメント(ヒント)をアラートする
                 
                 showHint(yourAnswer: yourAnswer)
                 
+            //showCommentラベルにアラート内容を追加して表示する
+                showComment.text += "[\(count)回目]答えは\(yourAnswer)より小さいです\n"
+                
+                
+            } else if yourAnswer < questionNum {       // 不正解:正解よりも回答が小さい場合
+                // 不正解コメント(ヒント)をアラートする
+                
+                showHint(yourAnswer: yourAnswer)
+                
+            //showCommentラベルにアラート内容を追加して表示する
+                showComment.text += "[\(count)回目]答えは\(yourAnswer)より大きいです\n"
+                
+                
                 
                 
             }
-        // showNumberラベル(デフォルト:??)に入力した数字を表示する
+            
+        // ④showNumberラベル(デフォルト:??)に入力した数字を表示する
         // yourAnswer をString型にキャストした
             showNumber.text = String(yourAnswer)
             
-         
+       
             
             
             
@@ -118,7 +145,7 @@ class ViewController: UIViewController {
     
     func showHint(yourAnswer: Int){
         // 回答が正解よりも大きい場合
-        if yourAnswer < count{
+        if yourAnswer > count{
             showAlert(message: "答えは\(yourAnswer)より小さい数字です", title: "")
         } else {
         // 回答が正解よりも小さい場合
@@ -126,6 +153,9 @@ class ViewController: UIViewController {
             
         }
     }
+    
+    // 問題(乱数)をリセットする関数
+    
 
 
 
