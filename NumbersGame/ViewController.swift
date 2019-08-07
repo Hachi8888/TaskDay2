@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     // ★共通で使う定数、変数
     // 乱数が入っている変数
-    var questionNum: Int = Int.random(in: 0...100)
+    var questionNum: Int = Int.random(in: 0...10)
     
     // 問題数をカウントする変数
     var count: Int = 0
@@ -68,10 +68,10 @@ class ViewController: UIViewController {
             
                 // 正解
                 // 正解コメントをアラートする(改行は\n?、動作未確認)
-                showAlert(message: "\(count - 1)回目で正解しました!\n数字をリセットしました!", title: "正解")
+                showAlert(message: "\(count)回目で正解しました!\n数字をリセットしました!", title: "正解")
                 
              //showCommentラベルにアラート内容を追加して表示する
-                showComment.text += "\(count - 1)回目で正解しました!"
+                showComment.text += "[正解]答えは\(yourAnswer)でした!\n"
                 
                 
                 // showNumberラベルをデフォルト:??に戻す(動作未確認)
@@ -145,16 +145,16 @@ class ViewController: UIViewController {
     
     func showHint(yourAnswer: Int){
         // 回答が正解よりも大きい場合
-        if yourAnswer > count{
+        if yourAnswer > questionNum {
             showAlert(message: "答えは\(yourAnswer)より小さい数字です", title: "")
-        } else {
+        } else if yourAnswer < questionNum {
         // 回答が正解よりも小さい場合
             showAlert(message: "答えは\(yourAnswer)より大きい数字です", title: "")
             
         }
     }
     
-    // 問題(乱数)をリセットする関数
+
     
 
 
