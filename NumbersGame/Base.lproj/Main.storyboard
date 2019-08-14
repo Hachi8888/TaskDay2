@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,77 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NumbersGame" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="数字当てゲーム" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgd-OQ-ova">
+                                <rect key="frame" x="100" y="50" width="120" height="19.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="??" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E4H-TL-4P9">
+                                <rect key="frame" x="151.5" y="99.5" width="17" height="20.5"/>
+                                <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c6l-VH-p4y">
+                                <rect key="frame" x="144.5" y="191" width="31" height="30"/>
+                                <state key="normal" title="決定"/>
+                                <connections>
+                                    <action selector="Button:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Nlo-f0-191"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="E3b-9Z-ghI">
+                                <rect key="frame" x="5" y="291" width="310" height="267"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HAY-dz-Wch">
+                                <rect key="frame" x="110" y="130" width="100" height="51"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="1aY-ll-Wqu"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="HAY-dz-Wch" firstAttribute="top" secondItem="E4H-TL-4P9" secondAttribute="bottom" constant="10" id="KZE-dK-P2a"/>
+                            <constraint firstItem="E3b-9Z-ghI" firstAttribute="top" secondItem="c6l-VH-p4y" secondAttribute="bottom" constant="70" id="L2L-Tg-9Ok"/>
+                            <constraint firstItem="c6l-VH-p4y" firstAttribute="top" secondItem="HAY-dz-Wch" secondAttribute="bottom" constant="10" id="O3o-ax-2Sj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="E3b-9Z-ghI" secondAttribute="trailing" constant="5" id="P7v-aj-VRI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="E3b-9Z-ghI" secondAttribute="bottom" constant="10" id="PcH-RR-Gwb"/>
+                            <constraint firstItem="c6l-VH-p4y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TsV-vP-bSD"/>
+                            <constraint firstItem="E3b-9Z-ghI" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="5" id="buy-F0-NFs"/>
+                            <constraint firstItem="Qgd-OQ-ova" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="ep7-hf-rhu"/>
+                            <constraint firstItem="HAY-dz-Wch" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fl8-Am-vPZ"/>
+                            <constraint firstItem="E3b-9Z-ghI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hye-qh-Kj5"/>
+                            <constraint firstItem="Qgd-OQ-ova" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="icf-sx-Myc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Qgd-OQ-ova" secondAttribute="trailing" constant="100" id="j97-dx-4bp"/>
+                            <constraint firstItem="Qgd-OQ-ova" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="nKz-aS-mZh"/>
+                            <constraint firstItem="E4H-TL-4P9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oCh-Pc-r2a"/>
+                            <constraint firstItem="E4H-TL-4P9" firstAttribute="top" secondItem="Qgd-OQ-ova" secondAttribute="bottom" constant="30" id="vF8-73-UT7"/>
+                            <constraint firstItem="c6l-VH-p4y" firstAttribute="top" secondItem="E4H-TL-4P9" secondAttribute="bottom" constant="71" id="zyZ-bD-Yba"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="inputFeild" destination="HAY-dz-Wch" id="j6I-NT-VaJ"/>
+                        <outlet property="showComment" destination="E3b-9Z-ghI" id="GBe-dd-pda"/>
+                        <outlet property="showNumber" destination="E4H-TL-4P9" id="RL6-c0-C21"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="136.875" y="115.14084507042254"/>
         </scene>
     </scenes>
 </document>
